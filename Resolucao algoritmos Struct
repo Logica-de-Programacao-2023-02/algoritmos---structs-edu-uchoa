@@ -14,3 +14,27 @@ func calcArea(c Circulo) float64 {
 	area := math.Pi * c.raio * c.raio
 	return area
 }
+
+2.Crie uma struct chamada Pessoa com os campos "nome", "idade" e "endereço
+O campo "endereço" deve ser uma outra struct com os campos "rua", "número", "cidade" e "estado".
+Escreva uma função que receba uma Pessoa como parâmetro e imprima seu endereço completo.
+
+package main
+import "fmt"
+type Endereco struct {
+	Rua     string
+	Numero  int
+	Cidade  string
+	Estado  string
+}
+type Pessoa struct {
+	Nome    string
+	Idade   int
+	Endereco Endereco
+}
+func imprimir(p Pessoa) {
+	fmt.Printf("Endereço de %s:\n", p.Nome)
+	fmt.Printf("Rua: %s, Número: %d\nCidade: %s, Estado: %s\n", p.Endereco.Rua, p.Endereco.Numero, p.Endereco.Cidade, p.Endereco.Estado)
+}
+
+3.
