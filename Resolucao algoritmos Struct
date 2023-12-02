@@ -217,4 +217,42 @@ func imprimirInfoAluno(a Aluno) {
 	fmt.Printf("Média das notas: %.2f\n", calcularMedia(a))
 }
 
-10.
+10.Crie uma struct chamada Filme com os campos "título", "diretor", "ano" e "avaliações".
+O campo "avaliações" deve ser um slice de inteiros representando as notas que o filme recebeu dos espectadores.
+Escreva funções que permitam adicionar ou remover avaliações 
+do filme, calcular a média das avaliações e imprimir as informações do filme e sua média de avaliações.
+
+package main
+import "fmt"
+type Filme struct {
+	Titulo      string
+	Diretor     string
+	Ano         int
+	Avaliacoes  []int
+}
+func addAvaliacao(f *Filme, avaliacao int) {
+	f.Avaliacoes = append(f.Avaliacoes, avaliacao)
+}
+func removerUltAvaliacao(f *Filme) {
+	if len(f.Avaliacoes) > 0 {
+		f.Avaliacoes = f.Avaliacoes[:len(f.Avaliacoes)-1]
+	}
+}
+func calcMediaAvaliacoes(f Filme) float64 {
+	if len(f.Avaliacoes) == 0 {
+		return 0.0
+	}
+
+	soma := 0
+	for _, avaliacao := range f.Avaliacoes {
+		soma += avaliacao
+	}
+
+	return float64(soma) / float64(len(f.Avaliacoes))
+}
+func imprimirInfoFilme(f Filme) {
+	fmt.Printf("Título: %s\n", f.Titulo)
+	fmt.Printf("Diretor: %s\n", f.Diretor)
+	fmt.Printf("Ano: %d\n", f.Ano)
+	fmt.Printf("Média das avaliações: %.2f\n", calcMediaAvaliacoes(f))
+}
