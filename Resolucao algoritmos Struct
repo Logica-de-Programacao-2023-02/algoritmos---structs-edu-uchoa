@@ -86,4 +86,23 @@ func calcularTempoTotal(musicas []Musica) int {
 	return tempoTotal
 }
 
-5.
+5.Usando as mesmas structs do exercício anterior,
+escreva uma função que receba um título de música como parâmetro e retorne uma lista das
+Playlists que possuem esse título.
+
+func buscarPlaylistsPorTitulo(playlists []Playlist, tituloMusica string) []Playlist {
+	var playlistsEncontradas []Playlist
+
+	for _, playlist := range playlists {
+		for _, musica := range playlist.Musicas {
+			if musica.Titulo == tituloMusica {
+				playlistsEncontradas = append(playlistsEncontradas, playlist)
+				break
+			}
+		}
+	}
+
+	return playlistsEncontradas
+}
+
+6.
