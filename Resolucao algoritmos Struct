@@ -51,4 +51,39 @@ func calcArea(t Triangulo) float64 {
 	return area
 }
 
-4.
+4.Crie uma struct chamada Playlist com os campos "nome" e "músicas". O campo "músicas" deve ser um slice de structs, 
+cada uma representando uma música com os campos "título", "artista" e "duração". Escreva uma função que receba uma
+Playlist como parâmetro e imprima o nome da playlist, 
+o tempo total da playlist e as informações de cada música.
+
+package main
+import "fmt"
+type Musica struct {
+	Titulo  string
+	Artista string
+	Duracao int // Duracao em segundos
+}
+type Playlist struct {
+	Nome    string
+	Musicas []Musica
+}
+func imprimirInfoPlaylist(p Playlist) {
+	fmt.Printf("Playlist: %s\n", p.Nome)
+	for i, musica := range p.Musicas {
+		fmt.Printf("Música %d:\n", i+1)
+		fmt.Printf("  Título: %s\n", musica.Titulo)
+		fmt.Printf("  Artista: %s\n", musica.Artista)
+		fmt.Printf("  Duração: %d segundos\n", musica.Duracao)
+	}
+	tempoTotal := calcularTempoTotal(p.Musicas)
+	fmt.Printf("Tempo total da playlist: %d segundos\n", tempoTotal)
+}
+func calcularTempoTotal(musicas []Musica) int {
+	var tempoTotal int
+	for _, musica := range musicas {
+		tempoTotal += musica.Duracao
+	}
+	return tempoTotal
+}
+
+5.
