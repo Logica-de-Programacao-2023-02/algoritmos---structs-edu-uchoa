@@ -152,3 +152,31 @@ func imprimirInfo(a Animal) {
 	fmt.Printf("Idade: %d anos\n", a.Idade)
 	fmt.Printf("Som que faz: %s\n", a.Som)
 }
+
+8.Crie uma struct chamada Viagem com os campos "origem", 
+"destino", "data" e "preço". Escreva uma função que receba um 
+slice de Viagens como parâmetro e retorne a viagem mais cara.
+
+package main
+import "fmt"
+type Viagem struct {
+	Origem  string
+	Destino string
+	Data    string
+	Preco   float64
+}
+func viagemMaisCara(viagens []Viagem) Viagem {
+	if len(viagens) == 0 {
+		// Retorna uma Viagem vazia se o slice estiver vazio
+		return Viagem{}
+	}
+	viagemMaisCara := viagens[0]
+	for _, viagem := range viagens {
+		if viagem.Preco > viagemMaisCara.Preco {
+			viagemMaisCara = viagem
+		}
+	}
+	return viagemMaisCara
+}
+
+9.
